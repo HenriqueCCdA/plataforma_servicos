@@ -1,0 +1,391 @@
+{% extends"layout.html" %}
+
+{% block title %} Envio de Arquivos {% endblock %}
+
+{% block content %}
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    html {
+        height: 100%
+    }
+    
+    #grad1 {
+        background-color:  #9C27B0;
+        background-image: linear-gradient(120deg, #FF4081, #81D4FA)
+    }
+    
+    #msform {
+        text-align: center;
+        position: relative;
+        margin-top: 20px
+    }
+
+    #msform fieldset .form-card {
+        background: white;
+        border: 0 none;
+        border-radius: 0px;
+        box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+        padding: 20px 40px 30px 40px;
+        box-sizing: border-box;
+        width: 94%;
+        margin: 0 3% 20px 3%;
+        position: relative
+    }
+
+    #msform fieldset {
+        background: white;
+        border: 0 none;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding-bottom: 20px;
+        position: relative
+    }
+
+    #msform fieldset:not(:first-of-type) {
+        display: none
+    }
+
+    #msform fieldset .form-card {
+        text-align: left;
+        color: #9E9E9E
+    }
+
+    #msform input,
+    #msform textarea {
+        padding: 0px 8px 4px 8px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        border-radius: 0px;
+        margin-bottom: 25px;
+        margin-top: 2px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        font-size: 16px;
+        letter-spacing: 1px
+    }
+
+    #msform input:focus,
+    #msform textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: none;
+        font-weight: bold;
+        border-bottom: 2px solid skyblue;
+        outline-width: 0
+    }
+    
+    #msform .action-button {
+        width: 100px;
+        background: skyblue;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 0px;
+        cursor: pointer;
+        padding: 10px 5px;
+        margin: 10px 5px
+    }
+   
+    #msform .action-button:hover,
+    #msform .action-button:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue
+    }
+
+    #msform .action-button-previous {
+        width: 100px;
+        background: #616161;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 0px;
+        cursor: pointer;
+        padding: 10px 5px;
+        margin: 10px 5px
+    }
+/*
+    #msform .action-button-previous:hover,
+    #msform .action-button-previous:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+    }
+/*
+    select.list-dt {
+        border: none;
+        outline: 0;
+        border-bottom: 1px solid #ccc;
+        padding: 2px 5px 3px 5px;
+        margin: 2px
+    }
+
+    select.list-dt:focus {
+        border-bottom: 2px solid skyblue
+    }
+*/
+    .card {
+        z-index: 0;
+        border: none;
+        border-radius: 0.5rem;
+        position: relative
+    }
+    /*
+
+    .fs-title {
+        font-size: 25px;
+        color: #2C3E50;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-align: left
+    }*/
+
+    #progressbar {
+        margin-bottom: 30px;
+        overflow: hidden;
+        color: lightgrey;   
+    }
+    
+    #progressbar .active {
+        color: #000000
+    }
+    
+    #progressbar li {
+        list-style-type: none;
+        font-size: 14px;
+        width: 33.3%;
+        float: left;
+        position: relative
+    }
+
+    #progressbar #account:before {
+        font-family: FontAwesome;
+        content: "\f023"
+    }
+
+    #progressbar #personal:before {
+        font-family: FontAwesome;
+        content: "\f007"
+    }
+
+    #progressbar #payment:before {
+        font-family: FontAwesome;
+        content: "\f09d"
+    }
+
+    #progressbar #confirm:before {
+        font-family: FontAwesome;
+        content: "\f00c"
+    }
+
+    #progressbar li:before {
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+        display: block;
+        font-size: 18px;
+        color: #8d8888;
+        background: rgb(255, 255, 255);
+        border-radius: 50%;
+        margin: 0 auto 10px auto;
+        padding: 2px
+    }
+
+    #progressbar li:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: lightgray;
+        position: absolute;
+        left: 0;
+        top: 25px;
+        z-index: -1
+    }
+
+    #progressbar li.active:before,
+    #progressbar li.active:after {
+        background: skyblue
+    }
+
+    
+
+    .fit-image {
+        width: 100%;
+        object-fit: cover
+    }
+</style>
+
+
+<div class="container-fluid py-5 text-center">
+
+    <div>
+        <h3>Requisição de Serviços e Envio de Imagens</h3>
+        <p>Para utilizar este serviço, você deve concluir algumas etapas de verificação. </p>
+
+    </div>
+
+
+</div>
+
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        
+        <div class="col-12 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active" id="account"><strong>Account</strong></li>
+                <li id="personal"><strong>Personal</strong></li>
+                <!--
+                <li id="payment"><strong>Payment</strong></li>
+                -->
+                <li id="confirm"><strong>Finish</strong></li>
+            </ul>
+    
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Sign Up Your User Account</strong></h2>
+                <p>Fill all form field to go to next step</p>
+
+                
+
+
+                <div class="row">
+
+                    <div class="col-md-12 mx-0">
+
+                        <form id="msform">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"><strong>Account</strong></li>
+                                <li id="personal"><strong>Personal</strong></li>
+                                <!--
+                                <li id="payment"><strong>Payment</strong></li>
+                                -->
+                                <li id="confirm"><strong>Finish</strong></li>
+                            </ul> 
+
+                            <!-- fieldsets -->
+                            <!-- 1 -->
+                            <fieldset>
+                                <div class="form-card">
+                                    
+
+
+
+
+
+                                </div> 
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <!-- 2 -->
+                            <fieldset>
+                                <div class="form-card">
+                                    
+
+
+
+                                </div> 
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" /> 
+                                <input type="button" name="next" class="next action-button"
+                                    value="Submit" />
+
+                            </fieldset>
+                            <!-- 3 -->
+                            <!--
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Payment Information</h2>
+                                    <div class="radio-group">
+                                        <div class='radio' data-value="credit"><img
+                                                src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px">
+                                        </div>
+                                        <div class='radio' data-value="paypal"><img
+                                                src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px">
+                                        </div> <br>
+                                    </div> <label class="pay">Card Holder Name*</label> <input type="text"
+                                        name="holdername" placeholder="" />
+                                    <div class="row">
+                                        <div class="col-9"> <label class="pay">Card Number*</label> <input type="text"
+                                                name="cardno" placeholder="" /> </div>
+                                        <div class="col-3"> <label class="pay">CVC*</label> <input type="password"
+                                                name="cvcpwd" placeholder="***" /> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3"> <label class="pay">Expiry Date*</label> </div>
+                                        <div class="col-9"> <select class="list-dt" id="month" name="expmonth">
+                                                <option selected>Month</option>
+                                                <option>January</option>
+                                                <option>February</option>
+                                                <option>March</option>
+                                                <option>April</option>
+                                                <option>May</option>
+                                                <option>June</option>
+                                                <option>July</option>
+                                                <option>August</option>
+                                                <option>September</option>
+                                                <option>October</option>
+                                                <option>November</option>
+                                                <option>December</option>
+                                            </select> <select class="list-dt" id="year" name="expyear">
+                                                <option selected>Year</option>
+                                            </select> </div>
+                                    </div>
+                                </div> <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" /> <input type="button" name="make_payment"
+                                    class="next action-button" value="Confirm" />
+                            </fieldset>
+                            -->
+                            <!-- 4 -->
+                            <fieldset>
+                                <!--
+                                <div class="form-card">
+                                    -->
+                                    <h2 class="fs-title text-center">Success !</h2> <br><br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png"
+                                                class="fit-image"> </div>
+                                    </div> <br><br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 text-center">
+                                            <h5>You Have Successfully Signed Up</h5>
+                                        </div>
+                                    </div>
+                                    <!--
+                                </div>
+                                -->
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+<!--
+<div class="form-card">
+    <h2 class="fs-title text-center">Success !</h2> <br><br>
+    <div class="row justify-content-center">
+        <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png"
+                class="fit-image"> </div>
+    </div> <br><br>
+    <div class="row justify-content-center">
+        <div class="col-7 text-center">
+            <h5>You Have Successfully Signed Up</h5>
+        </div>
+    </div>
+</div>
+-->
+{% endblock %}

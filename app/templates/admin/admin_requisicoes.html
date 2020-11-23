@@ -1,0 +1,46 @@
+{% extends "admin/admin_layout.html" %}
+
+{% block title %} Requisições {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>Requisições dos Usuários:</h1>
+
+    <div class="table-responsive-md">
+        <table class="table table-bordered" id="id_table">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Data/Hora</th>
+            <th>Usuário</th>
+            <th>Empresa</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Serviço</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in lista %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.timestamp}}</td>
+                <td>{{i.user.username}}</td>
+                <td>{{i.user.empresa}}</td>
+                <td> {{i.descricao}}</td>
+                <td> {{i.status}} </td>
+                <td> {{i.servico}} </td>
+                <td> <a href="{{ url_for('admin.download', id_arq=i.id) }}"><span class="fa fa-download"></span></a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends"layout.html" %}
+
+{% block title %} Requisições {% endblock %}
+
+{% block content %}
+<div class="container-fluid py-5 text-left">
+
+    <div>
+        <h3>Acompanhamento de Requisições:</h3>
+        <p>Siga o andamento de suas requisições através da coluna <b>status</b>. Quando seu pedido
+            receber o <b>status:</b> <b> Concluído</b>,  será disponibilizado um link para ser feito o download. </p>
+        <p>Tipos de Status: <b>Enviado, Recebido, Validando, Simulando, Concluído.</b> </p>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Serviço</th>
+                <th>Descrição do Projeto</th>
+                <th>Data/Hora de Envio</th>
+                <th>Status</th>
+                <th> Download </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in dados %}
+            <tr>
+                <td>{{i.servico}}</td>
+                <td>{{i.descricao}}</td>
+                <td>{{i.timestamp}}</td>
+                <td> {{i.status}} </td>
+                <!-- {{ url_for('main.download', id_arq=i.id) }} -->
+                <td> <a href="#"><span class="fa fa-download"></span></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

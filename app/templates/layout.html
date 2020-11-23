@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+
+<head>
+  <title> {% block title %} {% endblock %} </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_lay.css') }}">
+
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgb(65, 64, 64);
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #555;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 24px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /*
+    #upload {
+      opacity: 0;
+    }
+
+    #upload-label {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+    }
+
+    .image-area {
+      border: 2px dashed rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+      position: relative;
+    }
+
+    .image-area::before {
+      content: 'Uploaded image result';
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.8rem;
+      z-index: 1;
+    }
+
+    .image-area img {
+      z-index: 2;
+      position: relative;
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .form-signin {
+      width: 100%;
+      margin: auto;
+    }
+
+    .form-label-group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .form-label-group>input,
+    .form-label-group>label {
+      height: 3.125rem;
+      padding: .75rem;
+    }
+
+    .form-label-group>label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      margin-bottom: 0;
+      /* Override default `<label>` margin 
+      line-height: 1.5;
+      color: #495057;
+      pointer-events: none;
+      cursor: text;
+      /* Match the input under the label 
+      border: 1px solid transparent;
+      border-radius: .25rem;
+      transition: all .1s ease-in-out;
+    }
+
+    .form-label-group input::-webkit-input-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input:-ms-input-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input::-ms-input-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input::-moz-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input::placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input:not(:placeholder-shown) {
+      padding-top: 1.25rem;
+      padding-bottom: .25rem;
+    }
+
+    .form-label-group input:not(:placeholder-shown)~label {
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+      font-size: 12px;
+      color: #777;
+    }
+
+    
+    .jumbotron {
+    background: none;
+    } */
+
+    .container-fluid {
+      width: 90%;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        </button>
+      </div>
+
+      <div class="py-4 px-3 mb-4 bg-dark">
+        <!--
+              <div class="text-center">
+                <h4 class="text-light"> Logo_Imagem </h4>
+              </div>
+               -->
+        <div class="media d-flex align-items-center">
+          <!--
+          <img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65"
+            class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            {{url_for('static', filename='images/Logo.png')}} 
+          -->
+          <img src="/static/images/Logo.png" alt="..." class="img-thumbnail">
+          <!--
+                    <div class="media-body">
+                        <h4 class="m-0">Jason Doe</h4>
+                        <p class="font-weight-light mb-0">Web developer</p>
+                    </div>
+                    -->
+        </div>
+
+      </div>
+      <!--
+      <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+        <div class="user-logo">
+          <div class="img" style="background-image: url(images/logo.jpg);"></div>
+          <h3>Catriona Henderson</h3>
+        </div>
+      </div>
+      -->
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="{{ url_for('main.index') }}"><span class="fa fa-home mr-3"></span> Página Inicial</a>
+        </li>
+        <li class="active">
+          <a href="{{ url_for('main.upload') }}"><span class="fa fa-upload mr-3"></span> Envio de Serviços</a>
+        </li>
+        <li class="active">
+          <a href="{{ url_for('main.lista') }}"><span class="fa fa-file-archive-o mr-3"></span> Pedidos e Relatórios</a>
+        </li>
+        
+        <!-- 
+                <li>
+                    <a href="#"><span class="fa fa-trophy mr-3"></span> Top Review</a>
+                </li>
+                -->
+        <li>
+          <a href="#"><span class="fa fa-cog mr-3"></span> Opções </a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-support mr-3"></span> Suporte </a>
+        </li>
+        <li class="active">
+          <a href="{{ url_for('auth.logout') }}"><span class="fa fa-sign-out mr-3"></span> Sair </a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <!-- Page Content class="p-4 p-md-5 pt-5" -->
+    <div id="content" class="pt-0">
+
+      {% block content %}
+
+
+      {% endblock %}
+
+    </div>
+
+
+  </div>
+  <!-- Scripts JS 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>-->
+
+
+  <!--
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+-->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
+  <!--
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"
+    crossorigin="anonymous"></script>
+
+
+
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+  <script src="{{ url_for('static', filename='js/multistep.js') }}"></script>
+
+</body>
+
+</html>

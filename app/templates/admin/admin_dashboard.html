@@ -1,0 +1,49 @@
+{% extends "admin/admin_layout.html" %}
+
+{% block title %} Usuarios Cadastrados {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1> Lista de Usuários Cadastrados </h1>
+    <div class="table-responsive-md" style="padding-top: 40px;">
+        <table class="table table-bordered text-center" id="id_table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Responsável Técnico</th>
+                    <th>Empresa</th>
+                    <th>Endereço</th>
+                    <th>Estado</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in lista %}
+                <tr>
+                    <td>{{i.username}}</td>
+                    <td>{{i.empresa}}</td>
+                    <td>{{i.endereco}}</td>
+                    <td>{{i.estado}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.telefone}}</td>
+                    <td>
+                        <a href="#"><span class="fa fa-trash"></span></a>
+                        <a href="#" style="padding-left: 3px;"><span class="fa fa-pencil"></span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    
+ 
+</div>
+
+
+
+
+
+
+{% endblock %}

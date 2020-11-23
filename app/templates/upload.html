@@ -1,0 +1,122 @@
+{% extends"layout.html" %}
+
+{% block title %} Envio de Arquivos {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-5 text-left">
+
+    <div>
+        <h3>Requisição de Serviços e Envio de Imagens</h3>
+
+    </div>
+
+    <div class="text-white text-center">
+        <!--
+        <p class="lead mt-mb-8">Faça o Upload dos arquivos necessário.</p>
+        -->
+        <img src="https://res.cloudinary.com/mhmd/image/upload/v1564991372/image_pxlho1.svg" alt="" width="200"
+            class="mb-4">
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 ">
+
+
+
+
+
+
+
+            <p class="text-white lead mt-mb-8"> Procedimentos para Envio de Imagens:</p>
+
+
+
+            <ul class="text-dark">
+
+                <li><b>Instalação do software livre VV</b></li>
+                <p class="text-dark">Para garantir o anonimato das características do paciente (nome, idade, data de
+                    nascimento, CPF, RG), as
+                    imagens em formato DICOM devem ser convertidas em formato MHD/RAW. Para isso realize o download e
+                    instalação
+                    do software livre VV <a href="https://www.creatis.insa-lyon.fr/rio/vv">Aqui.</a></p>
+
+                <li><b>conversão das imagens DICOM em MHD/RAW</b></li>
+
+
+                <p>Abra o software instalado e Importe as imagens DICOM usando o caminho: File/Open Dicom. Confira as
+                    imagens
+                    antes de salvar
+                    Para salvar as imagens em formato MHD/RAW use o caminho: File/Save current image.
+                    Em File name nomeie o arquivo com um número de 6 cifras, chamado de número identificador (ID).
+
+                    Importante: É responsabilidade do cliente vincular o número ID com os dados do paciente.
+
+                    Em Files of type selecione Images (*.mhd)</p>
+
+                <li><b>Formatar como *. zip ou *.rar</b></li>
+                <p>A conversão da imagem DICOM em MHD gera dois arquivos (formato <b>.mhd</b> e <b>.raw</b>), comprima
+                    os dois arquivos juntos em um único arquivo no formato <b>.rar</b> e <b>.zip</b>) e faça o upload.
+                </p>
+
+
+            </ul>
+
+        </div>
+
+        <div class="col-md-6 text-dark">
+            <form accept-charset="UTF-8" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    <label>Selecione um Serviço:</label>
+                    {{form.servico(class="form-control")}}
+                </div>
+
+                <div class="form-group">
+                    <label>Descreva seu Projeto:</label>
+                    {{form.descricao(class="form-control", placeholder=" ",
+                    style="height: 300px;")}}
+
+                    {% if form.descricao.errors %}
+                    {% for error in form.descricao.errors %}
+                    <span style="color: red;">Erro: {{ error }}</span>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+
+
+
+                <hr>
+                <div class="form-group mt-3">
+                    <label class="mr-2">Upload de Arquivos:</label>
+                    {{form.file}}
+                    <p>
+                        {% if form.file.errors %}
+                        {% for error in form.file.errors %}
+                        <span style="color: red;">Erro: {{ error }}</span>
+                        {% endfor %}
+                        {% endif %}
+                    </p>
+                </div>
+                <!-- Habilitar as mensagens Flash-->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+
+                {% for message in messages %}
+                <span style="color: red;">{{ message }}</span>
+
+                {% endfor %}
+
+                {% endif %}
+                {% endwith %}
+
+                <hr>
+                {{ form.submit(class="btn btn-primary m-0 rounded-pill px-4") }}
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

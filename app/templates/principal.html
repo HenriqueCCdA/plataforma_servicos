@@ -1,0 +1,240 @@
+{% extends"layout.html" %}
+
+{% block title %} Upload de Arquivos {% endblock %}
+
+{% block content %}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #777;
+    }
+
+    h1 {
+        font-size: 36px;
+        color: #555;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    #team img {
+        margin-top: -50px;
+    }
+
+    #team i {
+        font-size: 24px;
+        color: #555;
+    }
+
+    #team p {
+        font-weight: 500;
+    }
+
+    #team .card {
+        border-radius: 0;
+        box-shadow: 5px 5px 5px #e74c3c;
+        transition: all 0.3s ease-in;
+        -webkit-transition: all 0.3s ease-in;
+        -moz-transition: all 0.3s ease-in;
+    }
+
+    #team .card:hover {
+        background: #e74c3c;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 5px 5px 10px #9E9E9E;
+    }
+
+    #team .card:hover h3,
+    #team .card:hover i {
+        color: #fff;
+    }
+</style>
+
+<!-- Jumbotron Header -->
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+        <h1>Seja Bem-Vindo, {{current_user.username}}!</h1>
+        <p> This is a template for a simple marketing or informational website.
+            It includes a large callout called a jumbotron and three supporting pieces of content.
+            Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="{{url_for('main.upload')}}" role="button">Envie seus Aquivos
+                &raquo;</a></p>
+    </div>
+</div>
+
+
+<!--
+<section id="team">
+    <div class="container-fluid my-3 py-5 text-center">
+        <div class="row mb-5">
+            <div class="col">
+                <h1>Serviços</h1>
+                <p class="mt-5">Its a long asd nasd sa nas dsa n asdasda nasdasda nasndnasndnasdnas nasdn</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="/static/images/server.jpeg" alt="" class="img-fluid  w-150 mb-3">
+                        <h3>Dosimetria Clínica</h3>
+
+                        <p>Cálculo da dose absorvida (Gy) por unidade de atividade acumulada na região
+                            fonte (MBq*h) baseado em
+                            modelagem computacional, usando o processamento da imagem clínica do paciente obtida com
+                            Tomografia
+                            Computadoriza (CT), Ressonância Magnética Nuclear (RMN), Tomografia por Emissão de Fóton
+                            Único (siglas
+                            em inglês-SPECT) e Tomografia por Emissão de pósitron (siglas em inglês- PET)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="" alt="" class="img-fluid rounded-circle w-50 mb-3">
+                        <h3>Dosimetria Pré-Clínica</h3>
+
+                        <p>Dosimetria pré-clínica para o desenvolvimento de novos radiofármacos
+                            baseado em modelagem
+                            computacional
+                            para o cálculo de dose absorvida (Gy) por unidade de atividade acumulada na região fonte
+                            (MBq*h)
+                            usando
+                            o processamento da imagem tridimensional de modelos computacionais para pequenos animais</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="" alt="" class="img-fluid rounded-circle w-50 mb-3">
+                        <h3>Segmentação e Quantificação</h3>
+
+                        <p>Segmentação multirregional e quantificação de tumores, órgãos ou tecidos a
+                            partir da imagem
+                            tridimensional obtida com Tomografia Computadorizada (CT) ou Ressonância Magnética Nuclear
+                            (RMN).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="" alt="" class="img-fluid rounded-circle w-50 mb-3">
+                        <h3>Modelagem Computacional</h3>
+
+                        <p>Modelagem Computacional para o estudo de sistemas de diagnóstico por imagem
+                            médica como SPECT, PET e CT. Inclui-se também a modelagem computacional aplicada a problemas
+                            de transporte do tipo fonte detector e experimentos complexos de radioterapia</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+-->
+
+
+<section id="team">
+
+    <div class="container-fluid my-3 py-5 text-center">
+
+
+        <div class="row mb-5">
+            <div class="col">
+                <h1>Serviços</h1>
+                <p class="mt-5">Its a long asd nasd sa nas dsa n asdasda nasdasda nasndnasndnasdnas nasdn</p>
+            </div>
+        </div>
+
+
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-header" style="background-color: inherit; border: none;">
+                    <h3> Dosimetria Clínica </h3>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text">Cálculo da dose absorvida (Gy) por unidade de atividade acumulada na região
+                        fonte (MBq*h) baseado em
+                        modelagem computacional, usando o processamento da imagem clínica do paciente obtida com
+                        Tomografia
+                        Computadoriza (CT), Ressonância Magnética Nuclear (RMN), Tomografia por Emissão de Fóton
+                        Único (siglas
+                        em inglês-SPECT) e Tomografia por Emissão de pósitron (siglas em inglês- PET)</p>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" style="background-color: inherit; border: none;">
+                    <h3> Dosimetria pré-clínica </h3>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text">Dosimetria pré-clínica para o desenvolvimento de novos radiofármacos
+                        baseado em modelagem
+                        computacional
+                        para o cálculo de dose absorvida (Gy) por unidade de atividade acumulada na região fonte
+                        (MBq*h)
+                        usando
+                        o processamento da imagem tridimensional de modelos computacionais para pequenos animais</p>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" style="background-color: inherit; border: none;">
+                    <h3> Segmentação e quantificação </h3>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text">Segmentação multirregional e quantificação de tumores, órgãos ou tecidos a
+                        partir da imagem
+                        tridimensional obtida com Tomografia Computadorizada (CT) ou Ressonância Magnética Nuclear
+                        (RMN).</p>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" style="background-color: inherit; border: none;">
+                    <h3> Modelagem Computacional </h3>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text">Modelagem Computacional para o estudo de sistemas de diagnóstico por imagem
+                        médica como SPECT, PET e CT. Inclui-se também a modelagem computacional aplicada a problemas
+                        de transporte do tipo fonte detector e experimentos complexos de radioterapia</p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<hr>
+
+<hr>
+</div> <!-- /container -->
+{% endblock %}

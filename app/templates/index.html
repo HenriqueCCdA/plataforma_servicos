@@ -1,0 +1,102 @@
+{% extends"layout.html" %}
+
+{% block title %} Upload de Arquivos {% endblock %}
+
+{% block content %}
+
+<!-- Jumbotron Header -->
+
+<div class="jumbotron jumbotron-fluid bg-gray">
+    <div class="container-fluid">
+        <h1>Seja Bem-Vindo, {{current_user.username}}!</h1>
+        <p class="lead"> Estamos em construção... </p>
+        <p class="lead"> Contamos com sua compreensão para eventuais problemas. Se possível, envie comentários para nos
+            contar sobre sua experiência com a plataforma.</p>
+        <p><a class="btn btn-primary btn-lg" href="{{url_for('main.upload')}}" role="button"> Solicitação de Serviços
+                &raquo;</a></p>
+    </div>
+</div>
+
+<div class="container-fluid text-center">
+    <h1>Serviços</h1>
+    <!--
+    <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example.
+        It's built with default Bootstrap components and utilities with little customization.</p>
+    -->
+</div>
+
+
+<div class="container-fluid text-dark">
+
+
+    <div class="card-deck">
+        <div class="card" style="background-color: inherit; border: none;">
+            <div class="card-header" style="background-color: inherit; border: none;">
+                <h3> Dosimetria Clínica </h3>
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">Cálculo da dose absorvida (Gy) por unidade de atividade acumulada na região
+                    fonte (MBq*h) baseado em
+                    modelagem computacional, usando o processamento da imagem clínica do paciente obtida com
+                    Tomografia
+                    Computadoriza (CT), Ressonância Magnética Nuclear (RMN), Tomografia por Emissão de Fóton
+                    Único (siglas
+                    em inglês-SPECT) e Tomografia por Emissão de pósitron (siglas em inglês- PET)</p>
+
+            </div>
+        </div>
+        <div class="card" style="background-color: inherit; border: none;">
+            <div class="card-header" style="background-color: inherit; border: none;">
+                <h3> Dosimetria pré-clínica </h3>
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">Dosimetria pré-clínica para o desenvolvimento de novos radiofármacos
+                    baseado em modelagem
+                    computacional
+                    para o cálculo de dose absorvida (Gy) por unidade de atividade acumulada na região fonte
+                    (MBq*h)
+                    usando
+                    o processamento da imagem tridimensional de modelos computacionais para pequenos animais</p>
+
+            </div>
+        </div>
+        <div class="card" style="background-color: inherit; border: none;">
+            <div class="card-header" style="background-color: inherit; border: none;">
+                <h3> Segmentação e quantificação </h3>
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">Segmentação multirregional e quantificação de tumores, órgãos ou tecidos a
+                    partir da imagem
+                    tridimensional obtida com Tomografia Computadorizada (CT) ou Ressonância Magnética Nuclear
+                    (RMN).</p>
+
+            </div>
+        </div>
+        <div class="card" style="background-color: inherit; border: none;">
+            <div class="card-header" style="background-color: inherit; border: none;">
+                <h3> Modelagem Computacional </h3>
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">Modelagem Computacional para o estudo de sistemas de diagnóstico por imagem
+                    médica como SPECT, PET e CT. Inclui-se também a modelagem computacional aplicada a problemas
+                    de transporte do tipo fonte detector e experimentos complexos de radioterapia</p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div> <!-- /container -->
+{% endblock %}

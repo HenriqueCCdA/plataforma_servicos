@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+
+<head>
+  <title> {% block title %} {% endblock %} </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_lay.css') }}">
+
+  <style>
+    #upload {
+      opacity: 0;
+    }
+
+    #upload-label {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+    }
+
+    .image-area {
+      border: 2px dashed rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+      position: relative;
+    }
+
+    .image-area::before {
+      content: 'Uploaded image result';
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.8rem;
+      z-index: 1;
+    }
+
+    .image-area img {
+      z-index: 2;
+      position: relative;
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .form-signin {
+      width: 100%;
+      margin: auto;
+    }
+
+    .form-label-group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .form-label-group>input,
+    .form-label-group>label {
+      height: 3.125rem;
+      padding: .75rem;
+    }
+
+    .form-label-group>label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      margin-bottom: 0;
+      /* Override default `<label>` margin */
+      line-height: 1.5;
+      color: #495057;
+      pointer-events: none;
+      cursor: text;
+      /* Match the input under the label */
+      border: 1px solid transparent;
+      border-radius: .25rem;
+      transition: all .1s ease-in-out;
+    }
+
+    .form-label-group input::-webkit-input-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input:-ms-input-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input::-ms-input-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input::-moz-placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input::placeholder {
+      color: transparent;
+    }
+
+    .form-label-group input:not(:placeholder-shown) {
+      padding-top: 1.25rem;
+      padding-bottom: .25rem;
+    }
+
+    .form-label-group input:not(:placeholder-shown)~label {
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+      font-size: 12px;
+      color: #777;
+    }
+
+    /*
+    .jumbotron {
+    background: none;
+    } */
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        </button>
+      </div>
+
+      <div class="py-4 px-3 mb-4 bg-dark">
+        <div class="text-center">
+          <h4 class="text-light"> Administrador </h4>
+        </div>
+      </div>
+
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="{{ url_for('admin.dashboard') }}"><span class="fa fa-users mr-3"></span> Usuários</a>
+        </li>
+        <li class="active">
+          <a href="{{ url_for('admin.requisicoes') }}"><span class="fa fa-list-ol mr-3"></span>Requisições</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-cloud-download mr-3"></span> Download</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-cog mr-3"></span> Opções </a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-support mr-3"></span> Suporte </a>
+        </li>
+        <li class="active">
+          <a href="{{ url_for('auth.logout') }}"><span class="fa fa-sign-out mr-3"></span> Sair </a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+
+      {% block content %}
+      {% endblock %}
+
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+
+
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/tabela.js') }}"></script>
+
+
+</body>
+
+</html>

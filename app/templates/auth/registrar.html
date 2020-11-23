@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuário</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            background-color: #d9dddf;
+
+        }
+
+        .login-dark form {
+            max-width: 650px;
+            padding: 40px;
+
+            width: 90%;
+            background-color: #1e2833;
+            border-radius: 4px;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: #fff;
+            box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="login-dark">
+
+
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <h2>Registro de Usuário: </h2>
+            </div>
+
+            <!-- Nome -->
+            <div class="form-group">
+
+                <label for="name">Nome: </label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    {{form.username(class="form-control", placeholder="Nome")}}
+                    
+                </div>
+            </div>
+
+            <!-- Empresa  -->
+            <div class="form-group">
+
+                <label for="empresa">Empresa: </label>
+
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                    </div>
+                    {{form.empresa(class="form-control", placeholder="Empresa")}}
+                </div>
+            </div>
+
+            <!-- Email  -->
+            <div class="form-group">
+
+                <label for="email">Email: </label>
+
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    {{form.email(class="form-control", placeholder="Email")}}
+
+                    {% if form.email.errors %}
+                        <ul class="errors">
+                            {% for error in form.email.errors %}
+                            <li><span style="color: red;">{{ error }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                
+            </div>
+
+            <div class="form-group">
+
+                <label for="telefone">Telefone: </label>
+
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    {{form.telefone(class="form-control", placeholder="Telefone")}}
+                </div>
+            </div>
+
+            <!-- Password  -->
+            <div class="form-group">
+
+                <label for="password">Senha: </label>
+
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+
+                    {{form.password(class="form-control", placeholder="Senha")}}
+                    {% if form.password.errors %}
+                        <ul class="errors">
+                            {% for error in form.password.errors %}
+                            <li><span style="color: red;">{{ error }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Password 2  -->
+            <div class="form-group">
+                   
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+
+                    {{form.password2(class="form-control", placeholder="Repita sua Senha")}}
+
+                    {% if form.password2.errors %}
+                        <ul class="errors">
+                            {% for error in form.password2.errors %}
+                            <li><span style="color: red;">{{ error }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Endereco -->
+            <div class="form-group">
+
+                <label for="endereco">Endereço</label>
+
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-road"></i> </span>
+                    </div>
+                    {{form.endereco(class="form-control", placeholder="Endereço")}}
+                    
+                </div>
+            </div>
+            <!-- Estado / País / CEP -->
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    
+
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
+                        </div>
+    
+                        
+                        {{form.pais(class="form-control", placeholder="País")}}
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-map-signs"></i> </span>
+                        </div>
+    
+                        {{form.estado(class="form-control", placeholder="Estado")}}
+                    </div>
+
+                    
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-map-marker"></i> </span>
+                        </div>
+    
+                        {{form.cep(class="form-control", placeholder="cep")}}
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+
+            <hr class="form-group">
+            <!--
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar</button>
+            -->
+            {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+
+        </form>
+
+
+
+    </div>
+</body>
+
+
+</html>

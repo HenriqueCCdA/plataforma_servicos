@@ -1,0 +1,143 @@
+{% extends "admin/admin_layout.html" %}
+
+{% block title %} Upload de Arquivos {% endblock %}
+
+{% block content %}
+
+<div class="col-md-8 order-md-1">
+    
+    <form class="needs-validation">
+      <!-- Nome -->
+        <div class="mb-3">
+          <label for="name">Nome (Responsável Técnico)</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+              </div>
+            <input type="text" class="form-control" id="name" placeholder="" value="" required>
+          </div>
+        </div>
+    
+        <!-- Empresa  -->
+      <div class="mb-3">
+        <label for="empresa">Empresa</label>
+        <div class="input-group">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+          </div>
+
+          <input type="text" class="form-control" id="empresa" placeholder="Empresa" required>
+        </div>
+      </div>
+
+      <!-- Email  -->
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <div class="input-group">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          </div>
+
+          <input type="text" class="form-control" id="email" placeholder="Email" required>
+        </div>
+      </div>
+
+      <!-- Password  -->
+      <div class="mb-3">
+        <label for="senha">Senha</label>
+        <div class="input-group">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+
+          <input type="text" class="form-control" id="senha" placeholder="******" type="password"required>
+        </div>
+      </div>
+
+      <!-- Password 2  -->
+      <div class="mb-3">
+        <label for="senha2">Senha (Digite Novamente)</label>
+        <div class="input-group">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+
+          <input type="text" class="form-control" id="senha2" placeholder="******" type="password" required>
+        </div>
+      </div>
+
+      <!-- Endereco -->
+      <div class="mb-3">
+        <label for="endereco">Endereço</label>
+        <div class="input-group">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-map-marker"></i> </span>
+          </div>
+
+          <input type="text" class="form-control" id="endereco" placeholder="Endereço" required>
+        </div>
+      </div>
+      <!-- Estado / País / CEP -->
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <label for="country">País</label>
+          <input type="text" class="form-control" id="country" placeholder="" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="state">Estado</label>
+          <input type="text" class="form-control" id="state" placeholder="" required>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="zip">CEP</label>
+          <input type="text" class="form-control" id="zip" placeholder="" required>
+        </div>
+      </div>
+
+      
+      
+      <hr class="mb-4">
+
+      <h4 class="mb-3">Administrador: </h4>
+
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" required>
+          <label class="custom-control-label" for="credit">Sim</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+          <label class="custom-control-label" for="debit">Não</label>
+        </div>
+      </div>
+      <!--
+      <h4 class="mb-3">Serviço: </h4>
+
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+          <label class="custom-control-label" for="credit">Credit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+          <label class="custom-control-label" for="debit">Debit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+          <label class="custom-control-label" for="paypal">Paypal</label>
+        </div>
+      </div>
+      -->
+
+      
+
+      <hr class="mb-4">
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar</button>
+    </form>
+  </div>
+
+{% endblock %}
