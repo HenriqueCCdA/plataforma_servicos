@@ -41,10 +41,10 @@ def upload():
                                                         user_id=current_user.id)
                     db.session.add(new_file)
                     db.session.commit()
-                    flash('Arquivo Salvo!')
+                    flash("Arquivo Enviado com Sucesso!", "success")
                     return redirect(url_for('main.upload'))
                 else:
-                    flash('Já existe um arquivo com este nome. Renomei-o!')
+                    flash("Já existe um arquivo com este nome. Renomei-o!", "danger")
 
                 
 

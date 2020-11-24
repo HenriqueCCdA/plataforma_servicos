@@ -31,6 +31,7 @@ def download_s3(file_name, expiration=3600):
                 'Key': file_name},
                 ExpiresIn=expiration)
 
+
     except FileNotFoundError:
         flash('Arquivo não encontrado.')
         return None

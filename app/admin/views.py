@@ -57,13 +57,22 @@ def download(id_arq):
 
     url = s3_connection.download_s3(arquivo_name)
 
-    return redirect(url)
-    
+    if requests.get(url).status_code != 200:
+        flash("Arquivo Indisponível para Download!", "warning")
+        return redirect(url_for('admin.requisicoes'))
 
+    return redirect(url)
+        
+## Funcionalidades a serem implementadas
 
 def deletar_usuario():
     return "usuario deletado"
 
-
 def editar_usuario():
     return "usuario editado"
+
+def deletar_requisicao():
+    return "requisicao deletada"
+
+def editar_requisicao():
+    return "requisicao editada"

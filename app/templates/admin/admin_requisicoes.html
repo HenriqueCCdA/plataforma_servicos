@@ -3,7 +3,18 @@
 {% block title %} Requisições {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show text-center font-weight-bold" role="alert">
+                <span>{{ message }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="container-fluid py-5 text-left">
     <h1>Requisições dos Usuários:</h1>
 
     <div class="table-responsive-md">

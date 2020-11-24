@@ -8,7 +8,7 @@ from app.auth.forms import LoginForm, RegistrationForm
 
 @bp.route("/login", methods=['GET', 'POST'])
 def login():
-    er=None
+
     form = LoginForm()
     if form.validate_on_submit():
 
@@ -23,11 +23,10 @@ def login():
             else:
                 return redirect(url_for('main.index'))
         else:
-            er='email invalido'
-            flash('Email ou Senha Invalido!')
+            flash("Email ou Senha Inválido!", "danger")
             return redirect(url_for('auth.login'))
 
-    return render_template('auth/login.html', form=form, er=er)
+    return render_template('auth/login.html', form=form)
 
 
 @bp.route("/logout", methods=['GET', 'POST'])
@@ -47,6 +46,6 @@ def registrar():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Usuário Cadastrado!')
+        flash("Usuário Cadastrado!", "success")
         return redirect(url_for('auth.login'))
     return render_template('auth/registrar.html', form=form)

@@ -87,10 +87,18 @@
 </head>
 
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show text-center font-weight-bold" role="alert">
+                <span>{{ message }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
     <div class="login-dark">
-        {% if error %}
-        <p class=error><strong>Error:</strong> {{ error }}
-            {% endif %}
+
         <form method="post">
             {{ form.hidden_tag() }}
 
@@ -113,29 +121,6 @@
                 {{ form.submit(class="btn btn-primary btn-block") }}
             </div>
             <a href=" {{url_for('auth.registrar')}}" class="forgot">Não possui uma conta? Clique Aqui.</a>
-            <!--
-            {% for error in form.email.errors %}
-                <span style="color: red;">{{ error }}</span>
-                {% endfor %}
-
-            {% for error in form.password.errors %}
-                <span style="color: red;">{{ error }}</span>
-                {% endfor %}
-            
-            {% if er %}
-            <span style="color: red;">{{ er }}</span>
-            {% endif %}
-            -->
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <ul class=flashes>
-                {% for message in messages %}
-                <span style="color: red;">{{ message }}</span>
-                
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
 
         </form>
     </div>
