@@ -24,18 +24,18 @@ def dashboard():
     check_admin()
 
     lista = usuario_model.User.query.all()
-
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = usuario_model.User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Parabéns, Cadastro com Sucesso!')
-        return redirect(url_for('admin.dashboard'))
+    
+    #form = RegistrationForm()
+    #if form.validate_on_submit():
+        #user = usuario_model.User(username=form.username.data, email=form.email.data)
+        #user.set_password(form.password.data)
+        #db.session.add(user)
+        #db.session.commit()
+        #flash('Parabéns, Cadastro com Sucesso!')
+        #return redirect(url_for('admin.dashboard'))
     
 
-    return render_template('admin/admin_dashboard.html', lista=lista, form=form)
+    return render_template('admin/admin_dashboard.html', lista=lista)
 
 
 @bp.route('/requisicoes', methods=['GET', 'POST'])
@@ -64,9 +64,21 @@ def download(id_arq):
     return redirect(url)
         
 ## Funcionalidades a serem implementadas
+@bp.route("/remover_cliente/<int:id>", methods=["GET", "POST"])
+def remover_cliente(id):
+    cliente = usuario_model.User.query.filter_by(id=id).first()
 
-def deletar_usuario():
-    return "usuario deletado"
+    try:
+        db.session.delete(cliente)
+        db.session.commit()
+        flash("Usuário removido com Sucesso!", "success")
+    except:
+        flash("Erro! Usuário não foi removido!", "danger")
+
+    return redirect(url_for("admin.dashboard"))
+
+
+
 
 def editar_usuario():
     return "usuario editado"
