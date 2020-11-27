@@ -102,7 +102,7 @@
                 <hr>
                 <div class="form-group mt-3">
                     <label class="mr-2">Upload de Arquivos:</label>
-                    {{form.file}}
+                    {{form.file(accept=".zip, .rar")}}
                     <p>
                         {% if form.file.errors %}
                         {% for error in form.file.errors %}

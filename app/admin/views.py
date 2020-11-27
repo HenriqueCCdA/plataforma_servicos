@@ -63,7 +63,7 @@ def download(id_arq):
 
     return redirect(url)
         
-## Funcionalidades a serem implementadas
+
 @bp.route("/remover_cliente/<int:id>", methods=["GET", "POST"])
 def remover_cliente(id):
     cliente = usuario_model.User.query.filter_by(id=id).first()
@@ -79,7 +79,7 @@ def remover_cliente(id):
 
 
 
-
+## Funcionalidades a serem implementadas
 def editar_usuario():
     return "usuario editado"
 

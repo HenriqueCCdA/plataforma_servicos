@@ -24,7 +24,7 @@ class RegistrationForm(FlaskForm):
     cep = StringField('CEP', validators=[DataRequired()])
     # -- add ---
     password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password', message='Senhas precisam ser idênticas.')])
     submit = SubmitField('Cadastrar')
 
     @staticmethod
