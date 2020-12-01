@@ -1,4 +1,12 @@
-# Plataforma
+# Plataforma de Serviços
+
+![GitHub last commit](https://img.shields.io/github/last-commit/JuniorJDS/plataforma_servicos?style=plastic) ![GitHub](https://img.shields.io/github/license/JuniorJDS/plataforma_servicos?style=plastic) 
+
+Esse projeto é uma estrutura básica para uma plataforma de Serviços com área do usuário, podendo ser feita requisição de serviços e envio de arquivos, e uma área do administrador que responderá as requisições.
+
+
+
+
 
 ## Ambiente Virtual e instalando requirements
 ```
