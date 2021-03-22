@@ -10,9 +10,9 @@ Esse projeto é uma estrutura básica para uma plataforma de Serviços com área
 
 ## Ambiente Virtual e instalando requirements
 ```
-    $ python3 -m venv plataforma_venv
+    $ python3 -m venv venv
 
-    $ source plataforma_venv/bin/activate
+    $ source venv/bin/activate
 
     $ pip3 install --upgrade pip
 
